@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Performance Analytics</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <aside class="sidebar">
+            <div class="logo">
+                <div class="logo-icon"></div>
+                <h2>EduAnalytics</h2>
+            </div>
+            <nav>
+                <a href="#" class="active" data-section="dashboard">Dashboard</a>
+                <a href="#" data-section="students">Manage Students</a>
+                <a href="#" data-section="marks">Enter Marks</a>
+                <a href="#" data-section="analytics">Detailed Reports</a>
+            </nav>
+            <div class="sidebar-footer">
+                <button id="seedBtn" class="btn-secondary">Seed Demo Data</button>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <header>
+                <h1>Student Performance Dashboard</h1>
+                <div class="user-profile">
+                    <span>Welcome, Admin</span>
+                    <div class="avatar">AD</div>
+                </div>
+            </header>
+
+            <section id="dashboard" class="content-section">
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <h3>Total Students</h3>
+                        <p id="totalStudents">-</p>
+                    </div>
+                    <div class="stat-card highlight">
+                        <h3>Class Average</h3>
+                        <p id="classAverage">-</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>High Performers</h3>
+                        <p id="highPerformersCount">-</p>
+                    </div>
+                </div>
+
+                <div class="chart-container">
+                    <canvas id="performanceChart"></canvas>
+                </div>
+
+                <div class="analytics-grid">
+                    <div class="data-card">
+                        <h3>Top 3 Performers</h3>
+                        <ul id="topPerformersList"></ul>
+                    </div>
+                    <div class="data-card">
+                        <h3>High Performers (>75%)</h3>
+                        <div class="scroll-table">
+                            <table id="highPerformersTable">
+                                <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Score</th>
+                                    </tr>
+                                </thead>
+                                <tbody></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="students" class="content-section hidden">
+                <div class="data-card">
+                    <h3>Add New Student</h3>
+                    <form id="studentForm" class="grid-form">
+                        <input type="text" id="student_id" placeholder="Student ID (e.g. S001)" required>
+                        <input type="text" id="name" placeholder="Full Name" required>
+                        <input type="email" id="email" placeholder="Email Address" required>
+                        <input type="text" id="department" placeholder="Department" required>
+                        <button type="submit" class="btn-primary">Add Student</button>
+                    </form>
+                </div>
+                <div class="data-card">
+                    <h3>All Students</h3>
+                    <div class="scroll-table">
+                        <table id="studentsTable">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Name</th>
+                                    <th>Dept</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <section id="marks" class="content-section hidden">
+                <div class="data-card">
+                    <h3>Enter Academic Marks</h3>
+                    <form id="marksForm" class="grid-form">
+                        <input type="text" id="m_student_id" placeholder="Student ID" required>
+                        <input type="text" id="m_subject" placeholder="Subject Code" required>
+                        <input type="number" id="m_marks" placeholder="Marks (0-100)" required min="0" max="100">
+                        <input type="number" id="m_semester" placeholder="Semester" required min="1">
+                        <button type="submit" class="btn-primary">Save Marks</button>
+                    </form>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <div id="toast" class="toast">Action Successful</div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
